@@ -22,8 +22,8 @@ class UEditor extends Field
     protected $options = [
         // 编辑器默认高度
         'initialFrameHeight' => 400,
-        'maximumWords' => 100000,
-        'serverUrl' => '',
+        'maximumWords'       => 100000,
+        'serverUrl'          => '',
     ];
 
     protected $view = 'ueditor::ueditor';
@@ -37,11 +37,13 @@ class UEditor extends Field
      * 设置编辑器高度
      *
      * @param int $height
+     *
      * @return $this
      */
     public function height(int $height)
     {
         $this->options['initialFrameHeight'] = $height;
+
         return $this;
     }
 
@@ -49,6 +51,7 @@ class UEditor extends Field
      * 设置上传接口
      *
      * @param string $url
+     *
      * @return $this
      */
     public function server(string $url)
@@ -60,6 +63,7 @@ class UEditor extends Field
 
     /**
      * @param string $disk
+     *
      * @return $this
      */
     public function disk($disk)
@@ -86,16 +90,15 @@ class UEditor extends Field
      */
     protected function setupScript()
     {
-        $id = 'ueditor-'.Str::random(8);
-        $this->attribute('id', $id);
+        $this->attribute('id', $id = $this->generateId());
 
         $opts = $this->formatOptions();
 
-        $cls = $this->getElementClassString().'_wrapper';
+        $cls = $this->elementClassString().'_wrapper';
 
         $this->script = <<<JS
 (function () {
-    var ue=UE.getEditor('$id', $opts);
+    var ue = UE.getEditor('{$id}', {$opts});
     ue.ready(function() {
         ue.setContent($('.$cls').html());
         ue.execCommand('serverparam', '_token', LA.token);
@@ -103,6 +106,11 @@ class UEditor extends Field
     });
 })();
 JS;
+    }
+
+    protected function generateId()
+    {
+        return 'ueditor-'.Str::random(8);
     }
 
     /**
