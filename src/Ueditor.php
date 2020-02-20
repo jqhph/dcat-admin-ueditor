@@ -17,7 +17,7 @@ class Ueditor extends Extension
 
     protected $lang = __DIR__.'/../resources/lang';
 
-    protected $composerJson = __DIR__.'/../composer.json';
+    protected $composer = __DIR__.'/../composer.json';
 
     public static function getUploadConfig($key = null, $default = null)
     {
