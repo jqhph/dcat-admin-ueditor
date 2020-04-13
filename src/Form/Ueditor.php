@@ -121,7 +121,7 @@ JS;
     public function variables()
     {
         return array_merge(parent::variables(), [
-            'homeUrl' => admin_asset('/vendor/dcat-admin-extensions/ueditor').'/',
+            'homeUrl' => admin_asset('@extension/ueditor').'/',
         ]);
     }
 
