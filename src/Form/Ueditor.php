@@ -15,8 +15,8 @@ use Illuminate\Support\Str;
 class UEditor extends Field
 {
     protected static $js = [
-        '/vendor/dcat-admin-extensions/ueditor/ueditor.config.js',
-        '/vendor/dcat-admin-extensions/ueditor/ueditor.all.min.js',
+        '@extension/ueditor/ueditor.config.js',
+        '@extension/ueditor/ueditor.all.min.js',
     ];
 
     protected $options = [
@@ -94,14 +94,14 @@ class UEditor extends Field
 
         $opts = $this->formatOptions();
 
-        $cls = $this->elementClassString().'_wrapper';
+        $cls = $this->getElementClassString().'_wrapper';
 
         $this->script = <<<JS
 (function () {
     var ue = UE.getEditor('{$id}', {$opts});
     ue.ready(function() {
         ue.setContent($('.$cls').html());
-        ue.execCommand('serverparam', '_token', LA.token);
+        ue.execCommand('serverparam', '_token', Dcat.token);
         ue.execCommand('serverparam', 'disk', '{$this->disk}');
     });
 })();
