@@ -80,7 +80,7 @@ return [
     'catcherAllowFiles' => ['.png', '.jpg', '.jpeg', '.gif', '.bmp'], /* 抓取图片格式显示 */
 
     /* 上传视频配置 */
-    'videoActionName' => 'uploadvideo', /* 执行上传视频的action名称 */
+    'videoActionName' => 'upload-video', /* 执行上传视频的action名称 */
     'videoFieldName' => 'upfile', /* 提交的视频表单名称 */
     'videoPathFormat' => '/ueditor/video/{yyyy}{mm}{dd}/{time}{rand:6}', /* 上传保存路径,可以自定义保存路径和文件名格式 */
     'videoUrlPrefix' => '', /* 视频访问路径前缀 */
@@ -90,7 +90,7 @@ return [
         '.ogg', '.ogv', '.mov', '.wmv', '.mp4', '.webm', '.mp3', '.wav', '.mid'], /* 上传视频格式显示 */
 
     /* 上传文件配置 */
-    'fileActionName' => 'uploadfile', /* controller里,执行上传视频的action名称 */
+    'fileActionName' => 'upload-file', /* controller里,执行上传视频的action名称 */
     'fileFieldName' => 'upfile', /* 提交的文件表单名称 */
     'filePathFormat' => '/ueditor/file/{yyyy}{mm}{dd}/{time}{rand:6}', /* 上传保存路径,可以自定义保存路径和文件名格式 */
     'fileUrlPrefix' => '', /* 文件访问路径前缀 */
